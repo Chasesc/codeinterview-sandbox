@@ -4,6 +4,7 @@ import uuid
 import time
 import logging
 import shutil
+from pathlib import Path
 from threading import Thread
 
 import docker
@@ -221,7 +222,7 @@ class Sandbox:
             logger.info('Stopping event_listener_thread...')
             self.event_listener_thread.join()
 
-    def run(self, language, code, stdin):
+    def run(self, language, code, stdin=''):
         logger.info('Sandbox (%s) received run request' % self.id)
         assert not os.path.isdir(self.code_directory)
 
@@ -254,6 +255,8 @@ class Sandbox:
             logger.error(e, exc_info=True)
             self.clean_up(remove_code_dir=False)
             raise
+
+        return Path(self.output_file_path).read_text()
 
     def _start_container(self):
         self.start_event_listener()
