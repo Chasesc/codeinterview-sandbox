@@ -44,5 +44,4 @@ LANG_CONFIG = {
         'extension': 'sc'
     }
 }
-}
 USER_CODE_DIR = os.path.join(SANDBOX_DIR, 'user-code')
