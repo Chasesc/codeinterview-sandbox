@@ -8,7 +8,7 @@ DEFAULT_TIME_LIMIT = 5
 DEFAULT_MEMORY_LIMIT = '100m'
 # Image will built from Dockerfile if it doesn't already exist
 DOCKER_IMAGE_NAME = 'codeint-sandbox'
-DOCKER_IMAGE_TAG = 'v3'
+DOCKER_IMAGE_TAG = 'v4.20'
 DOCKER_IMAGE_FULL_NAME = f'{DOCKER_IMAGE_NAME}:{DOCKER_IMAGE_TAG}'
 DOCKERFILE_DIR = SANDBOX_DIR
 # gVisor runtime or blank for default runtime
