@@ -38,6 +38,11 @@ LANG_CONFIG = {
     'rust': {
         'compile': lambda name: f'(~/.cargo/bin/rustc {name} && ./{name.split(".")[0]})'.split(' '),
         'extension': 'rs'
+    },
+    'scala': {
+        'compile': lambda name: f'(scala {name})'.split(' '),
+        'extension': 'sc'
     }
+}
 }
 USER_CODE_DIR = os.path.join(SANDBOX_DIR, 'user-code')
