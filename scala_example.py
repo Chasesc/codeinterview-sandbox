@@ -1,13 +1,12 @@
 from sandbox import Sandbox
 
 code = '''
-def printNums(min: Int = 1, max: Int = 10): Unit =
-    (min to max).foreach(println(_))
-
-println("start scala")
-printnums()
-println("end scala")
+object Hello {
+    def main(args: Array[String]) = {
+        println("hello world")
+    }
+}
 '''
 
-s = Sandbox()
+s = Sandbox(time_limit=10)
 print(s.run('scala', code))

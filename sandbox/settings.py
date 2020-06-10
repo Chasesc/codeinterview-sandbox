@@ -40,8 +40,8 @@ LANG_CONFIG = {
         'extension': 'rs'
     },
     'scala': {
-        'compile': lambda name: f'(scala {name})'.split(' '),
-        'extension': 'sc'
+        'compile': lambda name: f'''(scalac {name} && scala $(ls *.class | grep -v '\$' | sed 's/.class//g'))'''.split(' '),
+        'extension': 'scala'
     }
 }
 USER_CODE_DIR = os.path.join(SANDBOX_DIR, 'user-code')
