@@ -8,7 +8,7 @@ DEFAULT_TIME_LIMIT = 5
 DEFAULT_MEMORY_LIMIT = '100m'
 # Image will built from Dockerfile if it doesn't already exist
 DOCKER_IMAGE_NAME = 'codeint-sandbox'
-DOCKER_IMAGE_TAG = 'v4.20'
+DOCKER_IMAGE_TAG = 'v4.20.69'
 DOCKER_IMAGE_FULL_NAME = f'{DOCKER_IMAGE_NAME}:{DOCKER_IMAGE_TAG}'
 DOCKERFILE_DIR = SANDBOX_DIR
 # gVisor runtime or blank for default runtime
@@ -42,6 +42,10 @@ LANG_CONFIG = {
     'scala': {
         'compile': lambda name: f'''(scalac {name} && scala $(ls *.class | grep -v '\$' | sed 's/.class//g'))'''.split(' '),
         'extension': 'scala'
-    }
+    },
+    'swift': {
+        'compile': lambda name: f'''(~/swift-5.2.4-RELEASE-ubuntu18.04/usr/bin/swiftc {name} && ./{name.split(".")[0]})'''.split(' '),
+        'extension': 'swift'
+    },
 }
 USER_CODE_DIR = os.path.join(SANDBOX_DIR, 'user-code')
